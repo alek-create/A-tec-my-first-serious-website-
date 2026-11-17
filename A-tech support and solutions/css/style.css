@@ -171,62 +171,67 @@ header {
 .header_naam {
     font-size: 30px;
     color: var(--text);
-    margin-left: 300px; /* Zorgt ervoor dat de naam aan de rechterkant staat */
+    position: absolute;
+    left: 40%;
+    transform: translatex(-50%);
 }
 
 .placeholder-image {
-    position: absolute;
-    top: 400px;
-    left:400px;
-    max-width: 80%; /* Past zich aan aan de breedte van het scherm */
-    border-radius: 10px; /* Optioneel: afgeronde hoeken */
-    width: 650px;
+    width: 100%;
     height: auto;
-    z-index: 1; /* Zorgt ervoor dat de afbeelding boven de achtergrondvormen ligt */
+    border-radius: 10px;
+
+    position: relative;
+    z-index: 1;
 }
 
 .background-shapes {
-    position: fixed;
+    position: absolute;
     inset: 0;
-    overflow: hidden;
+    overflow: visible;
     pointer-events: none;
-    z-index: -1;
+    z-index: 0;
+
+    grid-column: 1 / -1;
+    grid-row: 1 / -1;
 }
+
 
 .shape {
     position: absolute;
-    width: 750px;
-    height: 750px;
+    width: 800px;
+    height: 800px;
     border-radius: 35px;
     background: rgba(17, 214, 139, 0.25);
 }
 
 .shape-1 {
-    bottom: 380px;
-    left: 350px;
-    transform: rotate(25deg);
+    top: 50%;
+    left: 50%;
+    transform: translate(-103%, -50%) rotate(25deg);
 }
 
 .shape-2 {
-    bottom: 380px;
-    left: 350px;
-    transform: rotate(-5deg);
+    top: 50%;
+    left: 50%;
+    transform: translate(-103%, -50%) rotate(-5deg);
 }
 
+
 .info_pagina {
-    position: absolute;
-    top: 400px;
-    right: 400px;
-    
+    width: 100%;
+    height: auto;
+    padding: 60px;
+
     font-size: 23px;
     color: var(--text);
     background: rgba(3, 116, 153, 0.30);
-    width: 650px;
-    height: auto;
-    padding: 60px; 
     border-radius: 15px;
 
+    position: relative;
+    z-index: 1;
 }
+
 
 #account {
     position: absolute;
@@ -246,4 +251,50 @@ header {
     height: auto;
     object-fit: contain;
     filter: brightness(0) invert(1);
+}
+
+
+.content-container {
+    position: relative;
+    isolation: isolate;
+
+
+    display: grid;
+    grid-template-columns: 3fr 2.6fr;
+    gap: 200px;
+
+    max-width: 1670px;
+    margin: 250px auto;
+    padding: 20px;
+}
+
+
+
+/* Bewegende achtergrondvormen */
+ 
+.floating-shapes {
+    position: fixed;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: -1;
+}
+
+.floating-shape {
+    position: absolute;
+    background: var(--accent);
+    opacity: 0.25;
+
+}
+
+.floating-shape.circle {
+    border-radius: 50%;
+}
+
+.floating-shape.square {
+    border-radius: 2px;
+}
+
+.floating-shape.diamond {
+    transform: rotate(45deg);
 }
